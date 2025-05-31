@@ -13,6 +13,7 @@ typedef struct RESULT{
     NODE* tree;
 }RESULT;
 
+RESULT* compress(char* str);
 void createHeap(NODE* arr[] , int n);
 void heapify(NODE* arr[], int i, int n);
 NODE* popHeap(NODE* arr[], int* n);
