@@ -4,12 +4,12 @@
 
 typedef struct NODE{
     int data;
-    int power;              //huffman value of all child nodes summed up
+    int power;              //frequency of all child nodes summed up
     struct NODE* left;
     struct NODE* right;
 }NODE;
 typedef struct RESULT{
-    char* compressedBin;    //when setting this value remember to use malloc
+    char* compressedBin;    
     NODE* tree;
 }RESULT;
 
