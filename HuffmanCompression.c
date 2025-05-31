@@ -22,7 +22,17 @@ void findEncoding(NODE* root, char target,char* path,  int depth, char* result, 
 char* decode(RESULT* res);
 char* decode(RESULT* result);
 
-
+int main(){
+    printf("Enter Text to Compress: ");
+    char str[100];
+    fgets(str, sizeof(str), stdin); //scanf stops at space
+    str[strcspn(str, "\n")] = '\0'; //fgets includes newline char thus strip it. Also strcspn second param is a char* type so use "  " not ' '
+    RESULT* compressedResult = compress(str); 
+    char* bin = compressedResult->compressedBin;
+    printf("Final Compressed: %s\n", bin);
+    printf("Decoded Message: %s\n", decode(compressedResult));
+    return 0;
+}
 
 RESULT* compress(char* str){
         int ascii;
@@ -192,17 +202,4 @@ char* decode(RESULT* result){
     }
     finalStr[fIndex] = '\0';
     return finalStr;
-}
-
-
-int main(){
-    printf("Enter Text to Compress: ");
-    char str[100];
-    fgets(str, sizeof(str), stdin); //scanf stops at space
-    str[strcspn(str, "\n")] = '\0'; //fgets includes newline char thus strip it. Also strcspn second param is a char* type so use "  " not ' '
-    RESULT* compressedResult = compress(str); 
-    char* bin = compressedResult->compressedBin;
-    printf("Final Compressed: %s\n", bin);
-    printf("Decoded Message: %s\n", decode(compressedResult));
-    return 0;
 }
